@@ -1,11 +1,11 @@
 rules:
-- id: can_be_constexpr
+- id: use-constexpr-for-literals
   patterns:
   - pattern: const $TYPE $VARIABLE = $VALUE;
   - metavariable-regex:
       metavariable: $VALUE
       regex: '\d+'
-  message: $VARIABLE can be constexpr.
+  message: Consider using constexpr as a literal is assigned.
   fix: constexpr $TYPE $VARIABLE = $VALUE
   languages: [cpp]
   severity: INFO
