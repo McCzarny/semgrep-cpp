@@ -1,0 +1,21 @@
+rules:
+  - id: return-result-instead-if-block
+    languages:
+      - cpp
+    patterns:
+      - pattern: |
+          if ($CONDITION) {
+            return $RESULT_POSITIVE;
+          } else {
+            return $RESULT_NEGATIVE;
+          }
+      - metavariable-pattern:
+          metavariable: $RESULT_POSITIVE
+          pattern-regex: (true|false)
+      - metavariable-pattern:
+          metavariable: $RESULT_NEGATIVE
+          pattern-regex: (true|false)
+    message: |
+      Consider simplifying the code by returning the result directly instead of using an if-else block:
+      e.g. return $CONDITION; or return !($CONDITION);
+    severity: WARNING
