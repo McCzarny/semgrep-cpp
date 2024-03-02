@@ -6,5 +6,6 @@ rules:
       metavariable: $VALUE
       regex: '\d+'
   message: $VARIABLE can be constexpr.
+  fix: constexpr $TYPE $VARIABLE = $VALUE
   languages: [cpp]
   severity: INFO
