@@ -1,0 +1,10 @@
+rules:
+- id: can_be_constexpr
+  patterns:
+  - pattern: const $TYPE $VARIABLE = $VALUE;
+  - metavariable-regex:
+      metavariable: $VALUE
+      regex: '\d+'
+  message: $VARIABLE can be constexpr.
+  languages: [cpp]
+  severity: INFO
