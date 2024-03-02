@@ -9,6 +9,9 @@ const float b = 3.14;
 // Should trigger the rule
 const char c = 'A';
 
+// Should trigger the rule
+const char c = "A";
+
 // Should not trigger the rule
 const int d = someFunction();
 
@@ -20,9 +23,6 @@ constexpr float f = 2.718;
 
 // Should not trigger the rule
 constexpr char g = 'B';
-
-// Global scope - Should trigger the rule
-const int globalInt = 100;
 
 // Within a function - Should trigger the rule
 void testFunction() {
