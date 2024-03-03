@@ -1,0 +1,16 @@
+rules:
+  - id: pascal-case-literal-const
+    patterns:
+    - pattern: constexpr $TYPE $VARIABLE = $VALUE;
+    - metavariable-regex:
+        metavariable: $VALUE
+        regex: ([\d.]+)|(".*")|('.*')
+    - metavariable-regex:
+        metavariable: $VARIABLE
+        regex: (?!^[A-Z][A-Za-z0-9]*$)
+
+    message: "const and constexpr variables should be PascalCase"
+    languages: [cpp]
+    severity: INFO
+    metadata:
+      category: best-practice
