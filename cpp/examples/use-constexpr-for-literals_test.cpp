@@ -1,41 +1,41 @@
 // Test cases for use-constexpr-for-literals rule
 
-// Should trigger the rule
+// ruleid: use-constexpr-for-literals
 const int a = 10;
 
-// Should trigger the rule
+// ruleid: use-constexpr-for-literals
 const float b = 3.14;
 
-// Should trigger the rule
+// ruleid: use-constexpr-for-literals
 const char c = 'A';
 
-// Should trigger the rule
-const char c = "A";
+// ruleid: use-constexpr-for-literals
+const char* c = "A";
 
-// Should not trigger the rule
+// ok: use-constexpr-for-literals
 const int d = someFunction();
 
-// Should not trigger the rule
+// ok: use-constexpr-for-literals
 constexpr int e = 20;
 
-// Should not trigger the rule
+// ok: use-constexpr-for-literals
 constexpr float f = 2.718;
 
-// Should not trigger the rule
+// ok: use-constexpr-for-literals
 constexpr char g = 'B';
 
-// Within a function - Should trigger the rule
 void testFunction() {
+// ruleid: use-constexpr-for-literals
     const int localInt = 200;
 }
 
-// Within a class - Should trigger the rule
 class TestClass {
 public:
+// ruleid: use-constexpr-for-literals
     const int memberInt = 300;
 };
 
-// Should not trigger the rule because the value is not a literal
+// ok: use-constexpr-for-literals
 int someFunction() {
     return 42;
 }

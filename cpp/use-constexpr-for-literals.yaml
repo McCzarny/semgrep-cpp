@@ -1,7 +1,9 @@
 rules:
   - id: use-constexpr-for-literals
     patterns:
-    - pattern: const $TYPE $VARIABLE = $VALUE;
+    - pattern-either:
+        - pattern: const $TYPE* $VARIABLE = $VALUE;
+        - pattern: const $TYPE $VARIABLE = $VALUE;
     - metavariable-regex:
         metavariable: $VALUE
         regex: ([\d.]+)|(".*")|('.*')

@@ -1,7 +1,9 @@
 rules:
   - id: pascal-case-literal-const
     patterns:
-    - pattern: constexpr $TYPE $VARIABLE = $VALUE;
+    - pattern-either:
+      - pattern: constexpr $TYPE $VARIABLE = $VALUE;
+      - pattern: constexpr $TYPE* $VARIABLE = $VALUE;
     - metavariable-regex:
         metavariable: $VALUE
         regex: ([\d.]+)|(".*")|('.*')

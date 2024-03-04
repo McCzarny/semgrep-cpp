@@ -1,19 +1,19 @@
-// Should trigger the rule
 bool function1(int a, int b) {
-  if (a == b) {
+ // ruleid: return-result-instead-if-block
+ if (a == b) {
     return true;
   } else {
     return false;
   }
 }
 
-// Should not trigger the rule
+// ok: return-result-instead-if-block
 bool function2(int a, int b) {
   return a == b;
 }
 
-// Should trigger the rule
 bool function3(int a, int b) {
+// ruleid: return-result-instead-if-block
     if (function1(a,b)) {
         return true;
     } else {
@@ -21,8 +21,8 @@ bool function3(int a, int b) {
     }
 }
 
-// Should trigger the rule
 bool function4(int a, int b) {
+// ruleid: return-result-instead-if-block
     if (function1(a,b) && function2(a,b)) {
         return true;
     } else {
