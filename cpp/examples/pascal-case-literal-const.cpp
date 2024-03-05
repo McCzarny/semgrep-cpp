@@ -15,3 +15,6 @@ constexpr char* VarNameChar = "1";
 const std::string VarNameString= "1";
 // ok: pascal-case-literal-const
 const std::string runTimeVar = getRandomString();
+
+// ok: pascal-case-literal-const
+int varName = 1;

@@ -1,15 +1,31 @@
+# It's quite complex because I had troubles with detecting constexpr using semgrep. It seems that it's not fully supported or I don't know how to do it. Maybe I will simplify it in the future. 
 rules:
   - id: pascal-case-literal-const
     patterns:
     - pattern-either:
-      - pattern: constexpr $TYPE $VARIABLE = $VALUE;
-      - pattern: constexpr $TYPE* $VARIABLE = $VALUE;
-    - metavariable-regex:
-        metavariable: $VALUE
-        regex: ([\d.]+)|(".*")|('.*')
-    - metavariable-regex:
-        metavariable: $VARIABLE
-        regex: (?!^[A-Z][A-Za-z0-9]*$)
+      - patterns:
+        - pattern-either:
+          - pattern: const $TYPE $VARIABLE = $VALUE;
+          - pattern: const $TYPE* $VARIABLE = $VALUE;    
+        - metavariable-regex:
+            metavariable: $VALUE
+            regex: ([\d.]+)|(".*")|('.*')
+        - metavariable-regex:
+            metavariable: $VARIABLE
+            regex: (?!^[A-Z][A-Za-z0-9]*$)
+      - patterns:
+        - pattern-either:
+          - pattern: $TYPE $VARIABLE = $VALUE;
+          - pattern: $TYPE* $VARIABLE = $VALUE;    
+        - metavariable-regex:
+            metavariable: $VALUE
+            regex: ([\d.]+)|(".*")|('.*')
+        - metavariable-regex:
+            metavariable: $VARIABLE
+            regex: (?!^[A-Z][A-Za-z0-9]*$)
+        - metavariable-regex:
+            metavariable: $TYPE
+            regex: ^constexpr\s
 
     message: "const and constexpr variables should be PascalCase"
     languages: [cpp]
