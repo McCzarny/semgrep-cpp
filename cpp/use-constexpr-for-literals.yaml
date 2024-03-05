@@ -4,12 +4,10 @@ rules:
     - pattern-either:
         - pattern: const $TYPE* $VARIABLE = $VALUE;
         - pattern: const $TYPE $VARIABLE = $VALUE;
+    - pattern-not: const std::string $VARIABLE = $VALUE; 
     - metavariable-regex:
         metavariable: $VALUE
         regex: ([\d.]+)|(".*")|('.*')
-    - metavariable-pattern:
-        metavariable: $TYPE
-        pattern-regex: (?!std::string)
 
     message: Consider using constexpr as a literal is assigned.
     fix: constexpr $TYPE $VARIABLE = $VALUE
@@ -17,4 +15,3 @@ rules:
     severity: INFO
     metadata:
       category: best-practice
-

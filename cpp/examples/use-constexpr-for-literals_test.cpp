@@ -24,6 +24,9 @@ constexpr float f = 2.718;
 // ok: use-constexpr-for-literals
 constexpr char g = 'B';
 
+// ok: use-constexpr-for-literals
+const std::string stringValue = "stringValue";
+
 void testFunction() {
 // ruleid: use-constexpr-for-literals
     const int localInt = 200;
