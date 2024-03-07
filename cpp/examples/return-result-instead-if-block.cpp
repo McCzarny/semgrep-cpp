@@ -29,3 +29,19 @@ bool function4(int a, int b) {
         return false;
     }
 }
+
+bool function5(int a) {
+    // ruleid: return-result-instead-if-block
+    return a == 1 ? true : false;
+}
+
+bool function6(int a) {
+    // ruleid: return-result-instead-if-block
+    return a == 1 ? false : true;
+}
+
+bool function7(int a) {
+    // ruleid: return-result-instead-if-block
+    bool var = a == 1 ? false : true;
+    return var;
+}

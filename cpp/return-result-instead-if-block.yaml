@@ -3,12 +3,15 @@ rules:
     languages:
       - cpp
     patterns:
-      - pattern: |
-          if ($CONDITION) {
-            return $RESULT_POSITIVE;
-          } else {
-            return $RESULT_NEGATIVE;
-          }
+      - pattern-either:
+        - pattern: |
+            if ($CONDITION) {
+              return $RESULT_POSITIVE;
+            } else {
+              return $RESULT_NEGATIVE;
+            }
+        - pattern: |
+            $CONDITION ? $RESULT_POSITIVE : $RESULT_NEGATIVE;
       - metavariable-pattern:
           metavariable: $RESULT_POSITIVE
           pattern-regex: (true|false)
