@@ -1,0 +1,33 @@
+rules:
+  - id: returning-else
+    languages:
+      - cpp
+    patterns:
+      - pattern: |
+          if (...) {
+            ...
+            return ...;
+          } else {
+            ...
+            return ...;
+          }
+    message: "Return statement found in else branch. Consider moving it outside the if-else block."
+    severity: INFO
+    metadata:
+      category: best-practice
+
+  - id: returning-else
+    languages:
+      - cpp
+    patterns:
+      - pattern: |
+          if (...) {
+            ...
+          } else {
+            ...
+            return ...;
+          }
+    message: "Return statement found in else branch. Consider inverting branches to remove the else block."
+    severity: INFO
+    metadata:
+      category: best-practice
